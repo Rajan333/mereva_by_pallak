@@ -225,92 +225,17 @@
             box-shadow: 0 2px 8px rgba(196, 163, 90, 0.4);
         }
 
-        /* Email Form */
-        .notify-form {
-            display: flex;
-            gap: 0;
-            max-width: 480px;
-            margin: 0 auto 3rem;
-            animation: fadeInUp 1s ease-out 1.1s both;
+        /* Welcome Message */
+        .welcome-message {
+            padding: 1.2rem 2.5rem;
+            background: rgba(45, 149, 150, 0.08);
+            border: 1px solid rgba(45, 149, 150, 0.2);
             border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(45, 149, 150, 0.1);
-        }
-
-        .notify-form input {
-            flex: 1;
-            padding: 1.1rem 1.8rem;
-            background: white;
-            border: 2px solid transparent;
-            color: var(--text-dark);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .notify-form input::placeholder {
-            color: #A0AEC0;
-        }
-
-        .notify-form input:focus {
-            outline: none;
-            border-color: var(--teal-light);
-        }
-
-        .notify-form button {
-            padding: 1.1rem 2rem;
-            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-            border: none;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .notify-form button:hover {
-            background: linear-gradient(135deg, var(--teal-light), var(--teal));
-            box-shadow: 0 8px 25px rgba(45, 149, 150, 0.35);
-        }
-
-        /* Countdown */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            color: var(--teal-dark);
             margin-bottom: 3rem;
-            animation: fadeInUp 1s ease-out 1.3s both;
-        }
-
-        .countdown-item {
-            text-align: center;
-        }
-
-        .countdown-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 600;
-            color: var(--teal);
-            background: white;
-            border-radius: 16px;
-            padding: 0.8rem 1.2rem;
-            min-width: 80px;
-            display: block;
-            margin-bottom: 0.5rem;
-            box-shadow: 0 4px 15px rgba(45, 149, 150, 0.1);
-            border: 1px solid rgba(45, 149, 150, 0.1);
-        }
-
-        .countdown-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-light);
             font-weight: 500;
+            font-size: 1.05rem;
+            animation: fadeInUp 1s ease-out 1.1s both;
         }
 
         /* Features Preview */
@@ -425,49 +350,8 @@
             }
         }
 
-        /* Success Message */
-        .success-message {
-            display: none;
-            padding: 1rem 2rem;
-            background: rgba(45, 149, 150, 0.1);
-            border: 1px solid rgba(45, 149, 150, 0.3);
-            border-radius: 50px;
-            color: var(--teal-dark);
-            margin-bottom: 2rem;
-            font-weight: 500;
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        .success-message.show {
-            display: inline-block;
-        }
-
         /* Responsive */
         @media (max-width: 600px) {
-            .notify-form {
-                flex-direction: column;
-                border-radius: 16px;
-            }
-
-            .notify-form input {
-                border-radius: 12px 12px 0 0;
-                text-align: center;
-            }
-
-            .notify-form button {
-                border-radius: 0 0 12px 12px;
-                padding: 1rem;
-            }
-
-            .countdown {
-                gap: 0.75rem;
-            }
-
-            .countdown-value {
-                min-width: 65px;
-                padding: 0.6rem 0.8rem;
-            }
-
             .features {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -475,6 +359,11 @@
 
             .logo {
                 max-width: 260px;
+            }
+
+            .welcome-message {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -511,32 +400,8 @@
                 <span></span>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <div class="welcome-message">
                 Welcome to the Meréva family! We'll be in touch soon.
-            </div>
-
-            <form class="notify-form" id="notifyForm">
-                <input type="email" placeholder="Enter your email for exclusive access" required>
-                <button type="submit">Join Waitlist</button>
-            </form>
-
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-value" id="days">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
             </div>
 
             <div class="features">
@@ -592,45 +457,8 @@
             }
         }
 
-        // Countdown Timer - Set to 45 days from now
-        function updateCountdown() {
-            const launchDate = new Date();
-            launchDate.setDate(launchDate.getDate() + 45);
-
-            const now = new Date();
-            const diff = launchDate - now;
-
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            }
-        }
-
-        // Form submission
-        document.getElementById('notifyForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = this;
-            const successMessage = document.getElementById('successMessage');
-
-            // Hide form and show success message
-            form.style.display = 'none';
-            successMessage.classList.add('show');
-
-            // In production, send the email to your backend
-            console.log('Email submitted:', form.querySelector('input').value);
-        });
-
         // Initialize
         createSparkles();
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
